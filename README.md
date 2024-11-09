@@ -246,4 +246,110 @@ While ```const``` is used when we want to define a variable whose value is fixed
     ```
 
 DONE!!! \（￣︶￣）/　
-</details>
+
+## Assignment 8
+### 1. Purpose of ```const```
+- In Flutter, the ```const``` keyword is used to define objects whose values would not change as long as the app runs. Using ```const``` can help improve performance, make the code more efficient, and prevent certain objects from being changed after they're created.
+- The *advantages* of using the ```const``` keywords are but not limited to:
+  - Better Performance:
+    
+    Allows less memory to be used as well as faster execution
+  - Immutability:
+    
+    Objects with the ```const``` keyword can't be changed which prevents unexpected changes that may cause bugs/errors
+  - Easier Hot Reload:
+    
+    Since objects with ```const``` are immutable, flutter can more easily manage the widget trees during hot reloads
+  - Consistency:
+    
+    Ensures that widgets that are identical/has the same properties to appear the same throughout the app
+- The ```const``` keyword *should be used* for:
+  
+  Widgets that don't change dynamically throughout the app's life, such as Static images, Static Texts and other similar widgets
+- The ```const``` keyword *should NOT be used* for:
+  
+  Widgets that will potentially change throughout the app's life, sucn as product cards whose data require user inputs
+
+### 2. Column vs Row
+- Columns are used to display widgets/data in a *vertical manner* (Up to Down), typically used for data inputs in forms
+- Example:
+```dart
+    Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+            Text('Product Name: $_productName'),
+            Text('Price: $_price'),
+            Text('Description: $_description'),
+            Text('Stock: $_stock')
+            ],
+        ),
+```
+
+- Rows are used to display widgets/data in a *horizontal manner* (Left to Right), typically used for navbars tha display data from left to right
+- Example:
+```dart
+    Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+        InfoCard(title: 'NPM', content: npm),
+        InfoCard(title: 'Name', content: name),
+        InfoCard(title: 'Class', content: className),
+        ],
+    ),
+```
+
+### 3. Input Elements in Flutter
+- Input elements I used in this assignment is the:
+
+    - Textfield:
+    ```dart
+    child: TextFormField(
+                    decoration: InputDecoration(
+                        hintText: "Product Name",
+                        labelText: "Product Name",
+                        border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                        ),
+                    ),
+                    onChanged: (String? value) {
+                        setState(() {
+                        _productName = value!;
+                        });
+                    },
+                    validator: (String? value) {
+                        if (value == null || value.isEmpty) {
+                        return "Product name cannot be empty!";
+                        }
+                        if (value.length > 100) {
+                        return "Product name cannot be longer than 100 characters!";
+                        }
+                        return null;
+                    },
+                    ),
+    ```
+
+- Input Elements I did *Not* use are the:
+    - Checkbox 
+    - Switch
+    - Slider
+    - DropdownButton
+    - Radio
+
+### 4. Flutter Themes
+By using the ```ThemeData()``` function inside the ```theme``` object in ```main.dart``` which ensures the app to use the colors of my choosing (red and red accent) for most of my widgets in the app as well as allowing me to use the flutter material pack which allows me to use existing icons which are similar in style
+```dart
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSwatch(
+            primarySwatch: Colors.red,
+        ).copyWith(secondary: Colors.redAccent[400]),
+        useMaterial3: true,
+```
+
+### 5. Managing Navigation in a Multi-Page Flutter App
+Managing navigation in multi-paged flutter apps are usually handled using the ```Navigator``` widget. The navigator works like the ```stack``` data structure in a sense where:
+- ```Navigator.push()```
+Is used to go to a new page
+- ```Navigator.pop()```
+Is used to return to a previous page
+
+DONE!!! \^o^/
