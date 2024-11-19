@@ -6,10 +6,10 @@ class MyHomePage extends StatelessWidget {
   final String npm = '2306173321'; // NPM
   final String name = 'Ghaza'; // Name
   final String className = 'KKI'; // Class
-  final List<ItemHomePage> items = [
-    ItemHomePage("View Product", Icons.shopping_bag, Colors.blue.shade900),
-    ItemHomePage("Add Product", Icons.add, Colors.red.shade700),
-    ItemHomePage("Logout", Icons.logout, Colors.blueGrey),
+  final List<ItemHomepage> items = [
+    ItemHomepage("View Product", Icons.shopping_bag, Colors.blue.shade900),
+    ItemHomepage("Add Product", Icons.add, Colors.red.shade700),
+    ItemHomepage("Logout", Icons.logout, Colors.blueGrey),
   ];
   MyHomePage({super.key});
 
@@ -28,7 +28,7 @@ class MyHomePage extends StatelessWidget {
           // Set drawer icon color to white
         ),
         iconTheme: const IconThemeData(color: Colors.white),
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
       ),
       drawer: const LeftDrawer(),
       body: Padding(
@@ -65,7 +65,7 @@ class MyHomePage extends StatelessWidget {
                     mainAxisSpacing: 10,
                     crossAxisCount: 3,
                     shrinkWrap: true,
-                    children: items.map((ItemHomePage item) {
+                    children: items.map((ItemHomepage item) {
                       return ItemCard(item);
                     }).toList(),
                   ),

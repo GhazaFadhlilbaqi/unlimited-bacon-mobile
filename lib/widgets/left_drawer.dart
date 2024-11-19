@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:unlimited_bacon_mobile/screens/menu.dart';
-import 'package:unlimited_bacon_mobile/screens/productentry_form.dart'; 
+import 'package:unlimited_bacon_mobile/screens/productentry_form.dart';
+import 'package:unlimited_bacon_mobile/screens/list_productentry.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -12,7 +13,7 @@ class LeftDrawer extends StatelessWidget {
         children: [
           DrawerHeader(
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primary,
+              color: Theme.of(context).colorScheme.secondary,
             ),
             child: const Column(
               children: [
@@ -27,12 +28,11 @@ class LeftDrawer extends StatelessWidget {
                 ),
                 Padding(padding: EdgeInsets.all(8)),
                 Text(
-                  "Your One Stop Shop for Unlimited Bacon",
+                  "Your one-stop-shop for Unlimited Bacons!",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 15,
                     color: Colors.white,
-                    fontWeight: FontWeight.normal,
                   ),
                 ),
               ],
@@ -40,27 +40,37 @@ class LeftDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.home_outlined),
-            title: const Text('Home Page'),
+            title: const Text('Home'),
+            // Bagian redirection ke MyHomePage
             onTap: () {
               Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => MyHomePage(),
-                ),
-              );
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MyHomePage(),
+                  ));
             },
           ),
           ListTile(
-            leading: const Icon(Icons.add),
+            leading: const Icon(Icons.add_sharp),
             title: const Text('Add Product'),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const ProductEntryFormPage(),
-                ),
-              );
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProductEntryFormPage(),
+                  ));
             },
+          ),
+          // ListTile Menu code
+          ListTile(
+              leading: const Icon(Icons.shopping_cart),
+              title: const Text('Product List'),
+              onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ProductEntryPage()),
+                  );
+              },
           ),
         ],
       ),
